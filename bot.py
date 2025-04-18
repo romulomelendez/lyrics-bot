@@ -19,8 +19,7 @@ async def get_lyrics(song_name: str) -> str:
        
     completion = client.chat.completions.create(
         model="deepseek-chat",
-        messages=[{"role": "user", "content": prompt}],
-        stream=True
+        messages=[{"role": "user", "content": prompt}]
     )
     
     return completion.choices[0].message.content
@@ -30,7 +29,7 @@ async def get_lyrics(song_name: str) -> str:
 async def lyrics(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     song_name = " ".join(context.args)
     if not song_name:
-        await update.message.reply_text("⚠️ Type a song name. Example: Bohemian Rhapsody")
+        await update.message.reply_text("⚠️ Type a song name. Example: /lyrics Bohemian Rhapsody")
         return
 
     await update.message.reply_text("🔍 Searching Lyrics... Please wait!")
