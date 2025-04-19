@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-client = OpenAI(api_key=os.getenv("API_KEY"), base_url="https://api.deepseek.com")
+client = OpenAI(api_key=os.getenv("API_KEY"), base_url=os.getenv("BASE_API_URL"))
 
 
 def create_prompt(song_name: str) -> str:
